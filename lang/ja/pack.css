@@ -1,0 +1,8 @@
+:root { --language-font: 'Noto Sans JP',system-ui,sans-serif; --language-cursive-font: var(--language-font); }
+.ja-section { margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+.ja-kana-grid { display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px; }
+.ja-kana-grid .ref-card { display:flex; flex-direction:column; align-items:center; min-height:64px; }
+.ja-table-wrap { overflow-x:auto; }
+.ja-table-wrap table { min-width:360px; }
+.ja-quiz { display:flex; flex-wrap:wrap; gap:8px; }
+.ja-quiz p { width:100%; }
