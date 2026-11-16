@@ -1,0 +1,31 @@
+name: Validate shared vocabulary assets and refresh CDN
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['core/**', 'lang/**', 'tools/check-live-release.ts', '.github/workflows/purge-cdn.yml']
+permissions:
+  contents: read
+concurrency:
+  group: vocabulary-cdn-main
+  cancel-in-progress: true
+jobs:
+  validate-and-purge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Validate core syntax and all pack contracts
+        run: bun tools/check-live-release.ts
+      - name: Refresh shared assets after validation
+        env:
+          ASSET_REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          for path in core/vocabCore.js core/vocabCore.css lang/km/pack.js lang/km/pack.css lang/pt/pack.js lang/pt/pack.css lang/ja/pack.js lang/ja/pack.css; do
+            curl --fail --silent --show-error --retry 3 "https://purge.jsdelivr.net/gh/${ASSET_REPOSITORY}@main/${path}"
+          done
+# No Azure deployment, credentials, secrets, Sheet requests, or live data writes.
+# This asset repository check is not a substitute for the full source-project test suite.
