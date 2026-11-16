@@ -1,0 +1,21 @@
+:root { --language-font: 'Noto Sans JP',system-ui,sans-serif; --language-cursive-font: var(--language-font); }
+.ja-section { margin-bottom: 24px; border-bottom: 1px solid var(--bdr); padding-bottom: 20px; }
+.ja-section h3 { color:var(--acc3); font-size:.95rem; margin-bottom:12px; }
+.ja-section h4 { color:var(--dim); font-size:.8rem; margin:16px 0 8px; }
+.ja-section p { font-size:.85rem; line-height:1.7; margin:10px 0; }
+.ja-kana-chart { display:grid; gap:6px; }
+.ja-kana-grid { display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px; }
+.ja-combo-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.ja-kana-grid .ref-card { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; min-height:74px; border-radius:8px; color:var(--txt); }
+.ja-kana-grid .ref-ro { font-size:.75rem; }
+.ja-kana-grid .ref-card:focus-visible { outline:2px solid var(--acc2); outline-offset:2px; }
+.ja-table-wrap { overflow-x:auto; max-width:100%; margin:10px 0; }
+.ja-table-wrap table { min-width:360px; }
+.ja-table-wrap th { letter-spacing:0; white-space:nowrap; }
+.ja-table-wrap td { line-height:1.6; border-bottom:1px solid var(--bdr); }
+.ja-table-wrap td:first-child { font-family:var(--language-font); }
+.ja-quiz { display:flex; flex-wrap:wrap; gap:8px; }
+.ja-quiz p { width:100%; }
+.ja-quiz input,.ja-quiz select { background:var(--surf2); color:var(--txt); border:1px solid var(--bdr); border-radius:6px; padding:10px; min-width:0; font:inherit; }
+.ja-quiz input { flex:1 1 180px; }
+.ja-quiz select { width:100%; }
